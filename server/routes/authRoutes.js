@@ -2,7 +2,7 @@
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
-    res.send("<h1>yahoo</h1>");
+    res.send("<h1>yahooo</h1>");
   });
 
   // app.get(
