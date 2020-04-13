@@ -10,9 +10,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then((user) => {
-    done(null, user);
-  });
+  done(null, "<h1>yahoo login</h1>");
+  // User.findById(id).then((user) => {
+  // });
 });
 
 passport.use(
@@ -24,17 +24,18 @@ passport.use(
       proxy: true,
     },
     (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          new User({
-            googleId: profile.id,
-          })
-            .save()
-            .then((user) => done(null, user));
-        }
-      });
+      done(null, { id: "hello" });
+      // User.findOne({ googleId: profile.id }).then((existingUser) => {
+      //   if (existingUser) {
+      //     done(null, existingUser);
+      //   } else {
+      //     new User({
+      //       googleId: profile.id,
+      //     })
+      //       .save()
+      //       .then((user) => done(null, user));
+      //   }
+      // });
     }
   )
 );
