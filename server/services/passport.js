@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  done(null, user);
+  done(null, "<h1>yahoo login</h1>");
   // User.findById(id).then((user) => {
   // });
 });
