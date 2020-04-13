@@ -7,7 +7,10 @@ const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport");
 
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 mongoose.connection
   .once("open", () => console.log("Connected to Atlas."))
   .on("error", (error) => console.log("Error connecting to Atlas:", error));

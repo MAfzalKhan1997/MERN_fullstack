@@ -24,9 +24,14 @@ passport.use(
       proxy: true,
     },
     (accessToken, refreshToken, profile, done) => {
+      // done(null, {
+      //   _id: { $oid: "5e93682291fac55a3401722f" },
+      //   googleId: "106734023314810969882",
+      //   __v: { $numberInt: "0" },
+      // });
       User.findOne({ googleId: profile.id }).then((existingUser) => {
         if (existingUser) {
-          done(null, existingUser);
+          done(null, user);
         } else {
           new User({
             googleId: profile.id,
