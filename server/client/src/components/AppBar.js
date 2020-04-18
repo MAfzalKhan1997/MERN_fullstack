@@ -7,7 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-// import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
   root: {
@@ -32,8 +32,8 @@ class MenuAppBar extends React.Component {
   onLogout = () => {};
 
   render() {
-    console.log(this.props);
-    const { classes, history } = this.props;
+    // console.log(this.props);
+    const { classes, history, user } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -41,35 +41,25 @@ class MenuAppBar extends React.Component {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Emaily
             </Typography>
-            {
-              // loading ? (
-              //   <CircularProgress size="30" className={classes.progress} />
-              // ) :
-              // (
+            {user === null ? (
+              <CircularProgress size={30} className={classes.progress} />
+            ) : (
               <div>
-                {/* {user ? ( */}
-                <Button color="inherit" onClick={() => this.onLogout()}>
-                  Logout
-                </Button>
-                {/* ) : ( */}
-                <div>
-                  <Button
-                    color="inherit"
-                    onClick={() => history.push("/signup")}
-                  >
-                    Signup
+                {user ? (
+                  <Button color="inherit" onClick={() => this.onLogout()}>
+                    Logout
                   </Button>
+                ) : (
                   <Button
                     color="inherit"
-                    onClick={() => history.push("/login")}
+                    href="/auth/google"
+                    // onClick={() => history.push("/auth/google")}
                   >
                     Login with Google
                   </Button>
-                </div>
-                {/* )} */}
+                )}
               </div>
-              // )
-            }
+            )}
           </Toolbar>
         </AppBar>
       </div>

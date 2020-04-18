@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import * as actions from "../redux/actions/authActions";
 
 class Home extends Component {
-//   componentDidMount() {
-//     this.props.fetchUser();
-//   }
-
   render() {
     return (
       <div>
@@ -19,15 +13,4 @@ class Home extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//       language: state.dropDownReducer.language || 'English'
-//     };
-//   };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchUser: () => dispatch(fetchUser()),
-// });
-
-export default // connect(null, actions)
-Home;
+export default Home;
