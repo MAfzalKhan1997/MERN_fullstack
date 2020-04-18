@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -6,7 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
   root: {
@@ -28,20 +29,17 @@ class MenuAppBar extends React.Component {
     this.state = {};
   }
 
-  onLogout = () => {
-    // this.props.mutate({
-    //   refetchQueries: [{ query }],
-    // });
-  };
+  onLogout = () => {};
 
   render() {
+    console.log(this.props);
     const { classes, history } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              Todo
+              Emaily
             </Typography>
             {
               // loading ? (
@@ -65,7 +63,7 @@ class MenuAppBar extends React.Component {
                     color="inherit"
                     onClick={() => history.push("/login")}
                   >
-                    Login
+                    Login with Google
                   </Button>
                 </div>
                 {/* )} */}
@@ -83,4 +81,12 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+const mapStateToProps = ({ authReducer }) => ({
+  user: authReducer.user,
+});
+
+// const mapDispatchToProps = (dispatch) => ({
+//   fetchUser: () => dispatch(fetchUser()),
+// });
+
+export default connect(mapStateToProps, null)(withStyles(styles)(MenuAppBar));

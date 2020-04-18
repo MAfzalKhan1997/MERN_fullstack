@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+import * as actions from "../redux/actions/authActions";
+
 import AppBar from "../components/AppBar";
 
-const App = (props) => (
-  <>
-    <AppBar {...props} />
-    {props.children}
-  </>
-);
+const App = (props) => {
+  useEffect(() => {
+    props.fetchUser();
+  }, [props]);
 
-export default withRouter(App);
+  return (
+    <>
+      <AppBar {...props} />
+      {props.children}
+    </>
+  );
+};
+
+export default connect(null, actions)(withRouter(App));
