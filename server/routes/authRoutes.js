@@ -15,12 +15,21 @@ module.exports = (app) => {
   app.get(
     "/auth/google/callback",
     passport.authenticate("google"),
-    (req, res) => res.redirect("/surveys")
+    (req, res) => {
+      process.env.NODE_ENV === "production"
+        ? res.redirect("https://obscure-fjord-08759.herokuapp.com/surveys")
+        : res.redirect("http://localhost:3000/surveys");
+    }
   );
+
+  // app.get("/surveys", (req, res) => {
+  //   res.send("<h1>Surveysssssss</h1>");
+  //   // res.redirect("/");
+  // });
 
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect("/");
   });
 
   app.get("/api/current_user", (req, res) => {

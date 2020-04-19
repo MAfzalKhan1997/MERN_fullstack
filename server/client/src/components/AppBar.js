@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -29,32 +30,30 @@ class MenuAppBar extends React.Component {
     this.state = {};
   }
 
-  onLogout = () => {};
-
   render() {
-    // console.log(this.props);
-    const { classes, history, user } = this.props;
+    const { classes, user } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              Emaily
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={user ? "/surveys" : "/"}
+              >
+                Emaily
+              </Link>
             </Typography>
             {user === null ? (
               <CircularProgress size={30} className={classes.progress} />
             ) : (
               <div>
                 {user ? (
-                  <Button color="inherit" onClick={() => this.onLogout()}>
+                  <Button color="inherit" href="/api/logout">
                     Logout
                   </Button>
                 ) : (
-                  <Button
-                    color="inherit"
-                    href="/auth/google"
-                    // onClick={() => history.push("/auth/google")}
-                  >
+                  <Button color="inherit" href="/auth/google">
                     Login with Google
                   </Button>
                 )}

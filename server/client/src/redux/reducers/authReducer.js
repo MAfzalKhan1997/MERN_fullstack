@@ -6,9 +6,6 @@ const reducer = (state = { user: null }, action) => {
     case FETCH_USER: {
       return { ...state, user: action.user || false };
     }
-    case "REMOVE_USER": {
-      return { ...state, user: null };
-    }
     default: {
       return state;
     }
