@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 
 require("./models/User");
@@ -16,6 +17,8 @@ mongoose.connection
   .on("error", (error) => console.log("Error connecting to Atlas:", error));
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use(
   cookieSession({
