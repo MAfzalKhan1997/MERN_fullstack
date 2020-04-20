@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+import Payments from "./Payments";
+
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
@@ -49,9 +51,12 @@ class MenuAppBar extends React.Component {
             ) : (
               <div>
                 {user ? (
-                  <Button color="inherit" href="/api/logout">
-                    Logout
-                  </Button>
+                  <>
+                    <Payments />
+                    <Button color="inherit" href="/api/logout">
+                      Logout
+                    </Button>
+                  </>
                 ) : (
                   <Button color="inherit" href="/auth/google">
                     Login with Google

@@ -1,0 +1,17 @@
+
+//// ____________SERVER SIDE____________ ////
+concurrently ==> use to start backend and frontend server simultaneously
+
+stripe ==> backend api handler modifies api handling process of stripe token
+
+body-parser ==> Parse incoming request bodies in a middleware before handlers, available under the req.body property.
+                    (post request dont accept paylaod so it will be available in handler through body-parser)
+
+***************** ***************** *****************
+
+//// ____________CLIENT SIDE____________ ////
+react-stripe-checkout ==> gives srtipe checkout process on frontend (a form handles user card details)
+                            it gives token which we will forward it to the backend stripe api for confirming charge.                            
+
+***************** ***************** *****************
+
