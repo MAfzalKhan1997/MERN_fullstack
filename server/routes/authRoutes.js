@@ -1,10 +1,6 @@
 const passport = require("passport");
 
 module.exports = (app) => {
-  app.get("/", (req, res) => {
-    res.send("<h1>Dasboard</h1>");
-  });
-
   app.get(
     "/auth/google",
     passport.authenticate("google", {
@@ -21,11 +17,6 @@ module.exports = (app) => {
         : res.redirect("http://localhost:3000/surveys");
     }
   );
-
-  // app.get("/surveys", (req, res) => {
-  //   res.send("<h1>Surveysssssss</h1>");
-  //   // res.redirect("/");
-  // });
 
   app.get("/api/logout", (req, res) => {
     req.logout();
