@@ -53,7 +53,15 @@ class MenuAppBar extends React.Component {
                 {user ? (
                   <>
                     <Payments />
-                    <Button color="inherit" href="/api/logout">
+                    <Typography variant="button">
+                      Credits : {user.credits}
+                    </Typography>
+                    <Button
+                      style={{ marginLeft: 10 }}
+                      color="inherit"
+                      variant="outlined"
+                      href="/api/logout"
+                    >
                       Logout
                     </Button>
                   </>
