@@ -2,10 +2,15 @@
 //// ____________SERVER SIDE____________ ////
 concurrently ==> use to start backend and frontend server simultaneously
 
-stripe ==> backend api handler modifies api handling process of stripe token
+stripe ==> backend api handler modifies api handling process of stripe token(which is given by stripe-checkout library on frontend)
 
 body-parser ==> Parse incoming request bodies in a middleware before handlers, available under the req.body property.
                     (post request dont accept paylaod so it will be available in handler through body-parser)
+
+sendgrid ==> Email provider we are using in this project
+
+heroku-postbuild ==> when we push code to heroku we guide it to install server dependencies after that install client dependencies
+                        and make client side build that will be deployed to our server
 
 ***************** ***************** *****************
 
