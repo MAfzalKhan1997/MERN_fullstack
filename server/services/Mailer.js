@@ -1,33 +1,22 @@
-const sendgrid = require("sendgrid");
-const helper = sendgrid.mail;
-
+const sgMail = require("@sendgrid/mail");
 const keys = require("../config/keys");
 
-class Mailer extends helper.Mail {
-  constructor({ subject, recipients }, content) {
-    super();
+sgMail.setApiKey(keys.sendGridKey);
 
-    this.from_email = new helper.Email("no-reply@emaily.com");
-    this.subject = subject;
-    this.body = new helper.Content("text/html", content);
-    this.recipients = this.formatAddresses(recipients);
+const Mailer = async ({ subject, recipients }, content) => {
+  const msg = {
+    to: recipients.map(({ email }) => email),
+    from: "mafzalkhan1997@gmail.com",
+    subject: subject,
+    html: content,
+  };
 
-    this.addContent(this.body);
-    this.addClickTracking();
-    this.addRecipients();
-  }
-
-  formatAddresses(recipients) {
-    recipients.map(({ email }) => new helper.Email(email));
-  }
-
-  addClickTracking() {
-    const trackingSettings = new helper.TrackingSettings();
-    const clickTracking = new helper.ClickTracking(true, true);
-
-    trackingSettings.setClickTracking(clickTracking);
-    this.addTrackingSettings(trackingSettings);
-  }
-}
+  const response = await sgMail.sendMultiple(msg);
+  return response;
+};
 
 module.exports = Mailer;
+
+// sendMultiple to hide other users email in a queue
+// .send(msg)
+// send to show other users in a queue
