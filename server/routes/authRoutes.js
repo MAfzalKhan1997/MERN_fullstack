@@ -1,5 +1,7 @@
 const passport = require("passport");
 
+const keys = require("../config/keys");
+
 module.exports = (app) => {
   app.get(
     "/auth/google",
@@ -12,9 +14,7 @@ module.exports = (app) => {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      process.env.NODE_ENV === "production"
-        ? res.redirect("https://obscure-fjord-08759.herokuapp.com/surveys")
-        : res.redirect("http://localhost:3000/surveys");
+      res.redirect(`${keys.redirectDomain}/surveys`);
     }
   );
 

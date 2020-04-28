@@ -4,9 +4,6 @@ import "./index.css";
 import Routes from "./Routes";
 import * as serviceWorker from "./serviceWorker";
 
-import axios from "axios";
-window.axios = axios;
-
 ReactDOM.render(
   <React.StrictMode>
     <Routes />

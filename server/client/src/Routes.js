@@ -7,7 +7,8 @@ import "typeface-roboto";
 
 import App from "./containers/App";
 import Home from "./containers/Home";
-import Surveys from "./containers/Surveys";
+import Dashboard from "./containers/Dashboard";
+import CreateSurvey from "./containers/CreateSurvey";
 
 const routes = () => (
   <Provider store={store}>
@@ -15,7 +16,8 @@ const routes = () => (
       <App>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/surveys" component={Surveys} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route path="/surveys/new" component={CreateSurvey} />
         </Switch>
       </App>
     </Router>

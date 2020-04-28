@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import Typography from "@material-ui/core/Typography";
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <p>
-          Edit <code>src/App.js</code> and save to reload
-        </p>
-        <a href="/auth/google">Sign in with Google</a>
+      <div style={{ textAlign: "center", marginTop: 50 }}>
+        <Typography variant="h1">Emaily!</Typography>
+        <Typography variant="h5">Collect feedback from users</Typography>
       </div>
     );
   }
