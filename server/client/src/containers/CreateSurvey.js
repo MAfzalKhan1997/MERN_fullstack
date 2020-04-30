@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { reduxForm } from "redux-form";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -23,6 +24,7 @@ class CreateSurvey extends Component {
       return (
         <SurveyFormReview
           onBack={() => this.setState({ showFormReview: false })}
+          {...this.props}
         />
       );
     }
@@ -40,4 +42,7 @@ class CreateSurvey extends Component {
   }
 }
 
-export default withStyles(styles)(CreateSurvey);
+// export default withStyles(styles)(CreateSurvey);
+export default reduxForm({
+  form: "surveyForm",
+})(withStyles(styles)(CreateSurvey));

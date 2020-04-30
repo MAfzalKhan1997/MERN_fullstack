@@ -1,21 +1,19 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 
-// import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import DoneIcon from "@material-ui/icons/Done";
 
 import SurveyField from "../components/SurveyField";
 import validateEmails from "../utils/validateEmails";
+import { SurveyFormFields as fields } from "../constant/fields";
 
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
   },
 });
-
-const fields = ["Survey Title", "Subject Line", "Email Body", "Recipient List"];
 
 class SurveyForm extends Component {
   renderFields = () => (
@@ -64,10 +62,10 @@ const validate = (values) => {
   errors.RecipientList = validateEmails(values.RecipientList || "");
 
   fields.forEach((label) => {
-    let labelNew = label.replace(/[./" "]/g, "");
+    label = label.replace(/[./" "]/g, "");
 
-    if (!values[labelNew] || values[labelNew] === " ") {
-      errors[labelNew] = `You must provide ${label.toLowerCase()}`;
+    if (!values[label] || values[label] === " ") {
+      errors[label] = "Required";
     }
   });
 
@@ -75,7 +73,7 @@ const validate = (values) => {
 };
 
 export default reduxForm({
-  validate,
   form: "surveyForm",
+  validate,
   destroyOnUnmount: false,
 })(withStyles(styles)(SurveyForm));
