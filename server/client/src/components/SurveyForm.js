@@ -29,6 +29,23 @@ class SurveyForm extends Component {
       ))}
     </div>
   );
+
+  renderButtons = (history) => (
+    <div style={{ textAlign: "right" }}>
+      <Button
+        onClick={() => history.push("/surveys")}
+        variant="outlined"
+        color="secondary"
+        style={{ marginRight: 10 }}
+      >
+        Cancel
+      </Button>
+      <Button variant="contained" color="primary" type="submit">
+        Next <DoneIcon fontSize="small" style={{ marginLeft: 10 }} />
+      </Button>
+    </div>
+  );
+
   render() {
     const { classes, history } = this.props;
     return (
@@ -36,19 +53,7 @@ class SurveyForm extends Component {
         <div style={{ margin: 50 }}>
           <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
             {this.renderFields()}
-            <div style={{ textAlign: "right" }}>
-              <Button
-                onClick={() => history.push("/surveys")}
-                variant="outlined"
-                color="secondary"
-                style={{ marginRight: 10 }}
-              >
-                Cancel
-              </Button>
-              <Button variant="contained" color="primary" type="submit">
-                Next <DoneIcon fontSize="small" style={{ marginLeft: 10 }} />
-              </Button>
-            </div>
+            {this.renderButtons(history)}
           </form>
         </div>
       </div>

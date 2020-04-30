@@ -29,35 +29,42 @@ class SurveyFormReview extends Component {
     });
   };
 
+  renderButtons = () => {
+    const { submitSurvey, formValues, history } = this.props;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          onClick={() => this.props.onBack()}
+          variant="contained"
+          color="secondary"
+        >
+          Back
+        </Button>
+        <Button
+          onClick={() => submitSurvey(formValues, history)}
+          variant="contained"
+          color="primary"
+        >
+          Submit Survey
+        </Button>
+      </div>
+    );
+  };
+
   render() {
-    const { classes, submitSurvey, formValues, history } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.root}>
         <div style={{ margin: 50 }}>
           <Typography variant="h5">Please review your entries</Typography>
           <br />
           {this.reviewFields()}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              onClick={() => this.props.onBack()}
-              variant="contained"
-              color="secondary"
-            >
-              Back
-            </Button>
-            <Button
-              onClick={() => submitSurvey(formValues, history)}
-              variant="contained"
-              color="primary"
-            >
-              Submit Survey
-            </Button>
-          </div>
+          {this.renderButtons()}
         </div>
       </div>
     );
