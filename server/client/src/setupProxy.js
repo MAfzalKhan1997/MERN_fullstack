@@ -16,13 +16,6 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
-  // app.use(
-  //   "/auth/google/callback",
-  //   createProxyMiddleware({
-  //     target: "http://localhost:5000",
-  //     changeOrigin: true,
-  //   })
-  // );
 };
 
 // module.exports = function (app) {

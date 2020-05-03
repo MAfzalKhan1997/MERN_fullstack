@@ -9,6 +9,11 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 module.exports = (app) => {
   app.get("/api/surveys/thanks", (req, res) => res.send("Thanks for Voting!"));
 
+  app.get("/api/surveys/webhooks", (req, res) => {
+    console.log(req.body);
+    res.send({});
+  });
+
   app.post("/api/surveys", requireAuth, requireCredits, async (req, res) => {
     const { SurveyTitle, SubjectLine, EmailBody, RecipientList } = req.body;
 

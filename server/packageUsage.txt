@@ -12,6 +12,9 @@ sendgrid ==> Email provider we are using in this project
 heroku-postbuild ==> when we push code to heroku we guide it to install server dependencies after that install client dependencies
                         and make client side build that will be deployed to our server
 
+localtunnel ==> Localtunnel allows you to easily share a web service on your local development machine without messing with DNS and firewall settings.
+                    (Localtunnel will assign you a unique publicly accessible url that will proxy all requests to your locally running webserver)
+
 ***************** ***************** *****************
 
 //// ____________CLIENT SIDE____________ ////
