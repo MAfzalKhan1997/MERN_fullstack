@@ -14,6 +14,9 @@ const App = (props) => {
   return (
     <>
       <AppBar {...props} />
+      <br />
+      <br />
+      <br />
       {props.children}
     </>
   );
