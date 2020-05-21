@@ -1,6 +1,8 @@
 const localtunnel = require("localtunnel");
 
 (async () => {
+  console.log("Tunnel Running Outside");
+
   const tunnel = await localtunnel({
     port: 5000,
     subdomain: "asdjhwkbavvhasdf",
@@ -15,3 +17,4 @@ const localtunnel = require("localtunnel");
   });
 })();
 // lt -h "http://serverless.social" -p 5000 -s asdjhwkbavvhasdf
+// http://asdjhwkbavvhasdf.serverless.social/api/surveys/webhooks

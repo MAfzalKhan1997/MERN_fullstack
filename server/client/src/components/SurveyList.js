@@ -9,8 +9,6 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Chip from "@material-ui/core/Chip";
-import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
@@ -58,54 +56,51 @@ class SurveyList extends Component {
 
   renderSurveys = () => {
     const { classes, surveys } = this.props;
-    {
-      return surveys.reverse().map((survey, index) => (
-        <ExpansionPanel defaultExpanded key={index}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <div className={classes.column}>
-              <Typography className={classes.heading}>
-                {survey.title}
-              </Typography>
-            </div>
-            <div className={classes.column}>
-              <Typography className={classes.secondaryHeading}>
-                {survey.subject}
-              </Typography>
-            </div>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.details}>
-            <div className={classes.column}>
-              <Typography variant="body2">{survey.body}</Typography>
-            </div>
-            <div className={classes.column} />
-            <div className={classNames(classes.column, classes.helper)}>
-              <Typography variant="subtitle2">
-                Sent:{" "}
-                <span style={{ color: "blue" }}>
-                  {new Date(survey.dateSent).toLocaleDateString()}
-                </span>
-                <br />
-                Last Responded:{" "}
-                <span style={{ color: "blue" }}>
-                  {survey.lastResponded
-                    ? new Date(survey.lastResponded).toLocaleDateString()
-                    : "No Response Yet"}
-                </span>
-              </Typography>
-            </div>
-          </ExpansionPanelDetails>
-          <Divider />
-          <ExpansionPanelActions>
-            <Typography variant="button" style={{ marginRight: 20 }}>
-              Yes: {survey.yes}
+
+    return surveys.reverse().map((survey, index) => (
+      <ExpansionPanel defaultExpanded key={index}>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <div className={classes.column}>
+            <Typography className={classes.heading}>{survey.title}</Typography>
+          </div>
+          <div className={classes.column}>
+            <Typography className={classes.secondaryHeading}>
+              {survey.subject}
             </Typography>
-            <Typography variant="button" style={{ marginRight: 20 }}>
-              No: {survey.no}
+          </div>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails className={classes.details}>
+          <div className={classes.column}>
+            <Typography variant="body2">{survey.body}</Typography>
+          </div>
+          <div className={classes.column} />
+          <div className={classNames(classes.column, classes.helper)}>
+            <Typography variant="subtitle2">
+              Sent:{" "}
+              <span style={{ color: "blue" }}>
+                {new Date(survey.dateSent).toLocaleDateString()}
+              </span>
+              <br />
+              Last Responded:{" "}
+              <span style={{ color: "blue" }}>
+                {survey.lastResponded
+                  ? new Date(survey.lastResponded).toLocaleDateString()
+                  : "No Response Yet"}
+              </span>
             </Typography>
-          </ExpansionPanelActions>
-        </ExpansionPanel>
-      ));
-    }
+          </div>
+        </ExpansionPanelDetails>
+        <Divider />
+        <ExpansionPanelActions>
+          <Typography variant="button" style={{ marginRight: 20 }}>
+            Yes: {survey.yes}
+          </Typography>
+          <Typography variant="button" style={{ marginRight: 20 }}>
+            No: {survey.no}
+          </Typography>
+        </ExpansionPanelActions>
+      </ExpansionPanel>
+    ));
   };
 
   render() {
